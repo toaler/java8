@@ -59,13 +59,13 @@ public class LambdaExpressionsPartOneTest {
 		assertEquals(a, betterString(a, b, (x, y) -> x.charAt(0) < y.charAt(0)));
 		assertEquals(b, betterString(a, b, (x, y) -> x.length() > y.length()));
 	}
-	
-	private String betterString(String a, String b, TwoStringPredicate p) {
+
+	private String betterString(String a, String b, TwoStringPredicate<String> p) {
 		return p.apply(a, b) ? a : b;
 	}
 
 	@FunctionalInterface
-	public interface TwoStringPredicate {
-		public boolean apply(String a, String b);
+	public interface TwoStringPredicate<T> {
+		public boolean apply(T a, T b);
 	}
 }
